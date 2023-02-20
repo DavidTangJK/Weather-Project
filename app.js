@@ -1,7 +1,11 @@
 const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");
-const { env } = require("process");
+require('dotenv').config();
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const app = express();
 app.use(express.static("public"));
