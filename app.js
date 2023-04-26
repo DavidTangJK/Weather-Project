@@ -19,7 +19,7 @@ app.get("/", function(req, res){
 });
 
 
-app.post("/", function(req, res){
+app.post("/weather", function(req, res){
   const city = req.body.cityName;
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + process.env.API_KEY + "&units=metric";
   https.get(url, function(response){
@@ -49,10 +49,12 @@ app.post("/", function(req, res){
   });
 })
 
-
+app.post("/", function(req, res){
+  res.redirect("/");
+});
 
 
 
 app.listen(3000, function(){
   console.log("Server is running on 3000.");
-})
+});
